@@ -36,28 +36,25 @@ class StoryboardBasedViewControllerTests: XCTestCase {
 ```
 
 --------
-## CodeBasedViewControllerTest
+## XIBBasedViewControllerTests
+
+XIBBasedViewController.swift
 ```swift
+
 import UIKit
 
-class CodeBasedViewController: UIViewController {
-    private let data: String
+class XIBBasedViewController: UIViewController {
     
-    init(data: String) {
-        self.data = data
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    @IBOutlet var label: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(">> create vies here")
 
+        // Do any additional setup after loading the view.
     }
- }
+
+}
+
 ```
 
 XIBBasedViewControllerTests.swift
@@ -83,6 +80,8 @@ class XIBBasedViewControllerTests: XCTestCase {
 ```
 
 -------
+
+## CodeBasedViewControllerTest
 
 CodeBasedViewController.swift
 ```swift
