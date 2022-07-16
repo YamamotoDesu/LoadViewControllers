@@ -34,3 +34,94 @@ class StoryboardBasedViewControllerTests: XCTestCase {
 
 }
 ```
+
+--------
+## CodeBasedViewControllerTest
+```swift
+import UIKit
+
+class CodeBasedViewController: UIViewController {
+    private let data: String
+    
+    init(data: String) {
+        self.data = data
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(">> create vies here")
+
+    }
+ }
+```
+
+XIBBasedViewControllerTests.swift
+```swift
+@testable import LoadViewControllers
+import XCTest
+import UIKit
+
+class XIBBasedViewControllerTests: XCTestCase {
+    
+//    func test_zero() {
+//        XCTFail("Test")
+//    }
+
+    func test_loading() {
+        let sut = XIBBasedViewController()
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertNotNil(sut.label)
+    }
+}
+```
+
+-------
+
+CodeBasedViewController.swift
+```swift
+import UIKit
+
+class CodeBasedViewController: UIViewController {
+    private let data: String
+    
+    init(data: String) {
+        self.data = data
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(">> create vies here")
+
+    }
+    
+}
+```
+
+CodeBasedViewControllerTests.swift
+```swift
+
+@testable import LoadViewControllers
+import XCTest
+
+class CodeBasedViewControllerTests: XCTestCase {
+
+    func test_loading() {
+        let sut = CodeBasedViewController(data: "DUMMY")
+        sut.loadViewIfNeeded()
+        
+    }
+
+}
+```
